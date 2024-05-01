@@ -1,0 +1,111 @@
+body {
+    height: auto;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+#top {
+    background-color: #3f51b5;
+    height: 5vh;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#userlogout {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#userlogout a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Default styles */
+#habit-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#habit-form h3 {
+    margin-top: 0;
+}
+
+#habitinput {
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+#addhabit,
+#changingbtn {
+    padding: 8px 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#addhabit {
+    background-color: #4CAF50;
+}
+
+#changingbtn {
+    background-color: #007bff;
+    margin-top: 10px;
+}
+
+/* Responsive styles */
+ @media only screen and (max-width: 600px) {
+    #habitinput {
+        width: 100%;
+    }
+} 
+#bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#list-of-habits{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 60%;
+    /* background-color: #007bff; */
+    margin: 20px;
+    box-shadow: 10px 7px 10px burlywood;
+}
+
+.habit-name{
+    margin-right: 10%;
+    /* background-color: #4CAF50; */
+}
+.weeklyviews{
+    display: flex;
+    /* background-color: #4CAF50; */
+    margin-right: 3%;
+}
+#date-n-toggle{
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.vertical-line{
+    border-left: 1px solid black;
+    height: 90px;
+    width: 1px;
+    margin: 0 5px;
+  }
