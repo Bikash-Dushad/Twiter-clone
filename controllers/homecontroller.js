@@ -13,11 +13,11 @@ module.exports.homepage =async (req, res)=>{
                 })
         }else{
             console.log("user not found or not authorized");
-            // req.flash('error', "signin first")
+            req.flash('error', "signin first")
             return res.redirect("/auth/signinpage")
         }
     }else{
-        // req.flash('error', "signin first")
+        req.flash('error', "signin first")
         return res.redirect("/auth/signinpage")
     }
 }
@@ -32,10 +32,12 @@ module.exports.addtext = async function(req, res){
             user: user
         }).populate()
         if(text){
+            req.flash('error', "text already exist")
             console.log("text already exist")
             return res.redirect('back')
         }else{
         var newText = await Text.create({content: content, user: user}) 
+        req.flash('success', "New Text added")
         console.log(newText)
         
         return res.redirect('back')
@@ -51,8 +53,10 @@ module.exports.deletetext = async function(req, res){
 
      if(text.user == req.cookies.user_id){
         await Text.deleteOne({ _id: text._id });
+        req.flash('success', "Text deleted successfully")
          return res.redirect('back')
      }else{
+        req.flash('error', "You are not authorized to deletee others Text")
          console.log("not authorized")
          return res.redirect('back')
      }
@@ -64,12 +68,11 @@ module.exports.deletetext = async function(req, res){
 module.exports.updatetext = async function(req, res){
     try {
         var user = req.cookies.user_id;
-        var textId = req.params.id; // Retrieve the text ID from request parameters
+        var textId = req.params.id;
         var texttoupdate = req.body.texttoupdate;
 
-        // Find the text by ID and update its content
         var updatedText = await Text.findByIdAndUpdate(textId, { content: texttoupdate });
-
+        req.flash('success', "Text updated successfully")
         console.log(updatedText);
         return res.redirect('back');
     } catch (error) {

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha512-0p3K0H3S6Q4bEWZ/WmC94Tgit2ular2/n0ESdfEX8l172YyQj8re1Wu9s/HT9T/T2osUw5Gx/6pAZNk3UKbESw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" type="text/css" href="/css/signup.css">
@@ -14,7 +17,7 @@
             <div id="signuptext">
                 <h1>Welcome Again</h1>
                 <span>
-                    Habit tracker apps can be helpfull for anyone looking to adopt healthier habits, increase productivity, or make positive lifestyle changes by providing structure, accountability, and valuable feedback on their journey towards personal growth and self-improvement.
+                    Re-enter the email and password to signin
                 </span>
             </div>
         </div>
@@ -28,5 +31,27 @@
             </form>
         </div>
     </div>
+
+    <script>
+        <% if(flash.success){ %>
+        new Noty({
+            theme: 'sunset',
+            text: '<%=flash.success %>',
+            type: 'succes',
+            layout: 'bottomLeft',
+            timeout: 2000
+        }).show();
+    <% } %>
+    <% if(flash.error && flash.error.length>0) {%>
+        new Noty({
+            theme: 'sunset',
+            text: '<%= flash.error %>',
+            type: 'error',
+            layout: 'bottomLeft',
+            timeout: 2000
+        }).show();
+
+    <% } %>
+    </script>
 </body>
 </html>

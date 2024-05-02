@@ -2,11 +2,17 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
   <link rel="stylesheet" type="text/css" href="/css/home.css" />
   <script src="https://kit.fontawesome.com/f383b6eabf.js" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>habit tracker</title>
+  <title>Text-App</title>
+  <style>
+    
+  </style>
 </head>
 
 <body>
@@ -14,32 +20,61 @@
     <h1>Text-App</h1>
     <div id="userlogout">
       <p>Hi <%=user.name %> |</p>
-      <a href="/auth/logout" id="logoutbtn">log out</a>
+      <a href="/auth/logout" id="logoutbtn">Log out</a>
     </div>
-  </div>
-  <div id="text-part">
-    <form action="/user/addtext" method="POST">
-      <input type="text" placeholder="Enter text to post" name="content" required>
-      <input type="submit" value="post">
-    </form>
   </div>
 
-  <% for(let textItem of text){ %>
-    <div id="post-and-name">
-      <p>
-        
-        <h2><%= textItem.content %></h2>
-        <small><%= textItem.user.name %></small>
-        <% if(locals.user && locals.user.id==textItem.user.id) {%>
-        <small><a href="/user/deletetext/<%= textItem.id %>"><i class="fa-solid fa-trash"></i></a></small>
-        <form action="/user/updatetext/<%= textItem.id%>" method="POST">
-          <input type="text" placeholder="Enter text to update" name="texttoupdate" required>
-          <input type="submit" value="update">
-        </form>
-        <% } %>
-      </p>
+  <div id="bottom">
+    <div id="text-part">
+      <form action="/user/addtext" method="POST">
+        <input type="text" placeholder="Enter text to post" name="content" required>
+        <input type="submit" value="Post">
+      </form>
     </div>
-  <% } %>
+
+   <div id="content-part">
+    
+   </div>
+   <div id="content-part">
+    <% for(let textItem of text){ %>
+      <div id="post-and-name">
+        <p>
+          <h2><%= textItem.content %></h2>
+          <small><%= textItem.user.name %></small>
+          <% if(locals.user && locals.user.id==textItem.user.id) {%>
+          <small><a href="/user/deletetext/<%= textItem.id %>"><i class="fa-solid fa-trash"></i></a></small>
+          <form action="/user/updatetext/<%= textItem.id%>" method="POST">
+            <input type="text" placeholder="Enter text to update" name="texttoupdate" required>
+            <input type="submit" value="Update">
+          </form>
+          <% } %>
+        </p>
+      </div>
+      <% } %>
+   </div>
+  </div>
+
+  <script>
+    <% if(flash.success){ %>
+        new Noty({
+            theme: 'sunset',
+            text: '<%=flash.success %>',
+            type: 'succes',
+            layout: 'bottomLeft',
+            timeout: 2000
+        }).show();
+    <% } %>
+    <% if(flash.error && flash.error.length>0) {%>
+        new Noty({
+            theme: 'sunset',
+            text: '<%= flash.error %>',
+            type: 'error',
+            layout: 'bottomLeft',
+            timeout: 2000
+        }).show();
+
+    <% } %>
+</script>
 </body>
 
 </html>

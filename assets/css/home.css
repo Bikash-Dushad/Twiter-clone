@@ -8,12 +8,16 @@ body {
 
 #top {
     background-color: #3f51b5;
-    height: 5vh;
     color: white;
-    padding: 20px;
+    padding: 20px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#top h1 {
+    margin: 0;
 }
 
 #userlogout {
@@ -22,90 +26,111 @@ body {
     gap: 10px;
 }
 
+#userlogout p {
+    margin: 0;
+    font-weight: bold;
+}
+
 #userlogout a {
     color: white;
     text-decoration: none;
-}
-
-/* Default styles */
-#habit-form {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-#habit-form h3 {
-    margin-top: 0;
-}
-
-#habitinput {
-    padding: 8px;
-    margin-bottom: 10px;
-    width: 200px;
-}
-
-#addhabit,
-#changingbtn {
+    background-color: #1a237e;
     padding: 8px 16px;
-    color: white;
-    border: none;
-    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
-#addhabit {
-    background-color: #4CAF50;
+#userlogout a:hover {
+    background-color: #263238;
 }
 
-#changingbtn {
-    background-color: #007bff;
-    margin-top: 10px;
-}
 
-/* Responsive styles */
- @media only screen and (max-width: 600px) {
-    #habitinput {
-        width: 100%;
-    }
-} 
 #bottom{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-}
-#list-of-habits{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 60%;
-    /* background-color: #007bff; */
-    margin: 20px;
-    box-shadow: 10px 7px 10px burlywood;
+    margin: 5%;
 }
 
-.habit-name{
-    margin-right: 10%;
-    /* background-color: #4CAF50; */
+#text-part {
+    margin-bottom: 5%;
 }
-.weeklyviews{
+
+#text-part form {
     display: flex;
-    /* background-color: #4CAF50; */
-    margin-right: 3%;
-}
-#date-n-toggle{
-    /* background-color: aqua; */
-    display: flex;
+    flex-direction: row;
     align-items: center;
+}
+
+#text-part input[type="text"] {
+    padding: 12px;
+    margin-right: 20px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+#text-part input[type="submit"] {
+    padding: 12px 24px;
+    background-color: #3f51b5;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#text-part input[type="submit"]:hover {
+    background-color: #041261;
+}
+
+  #post-and-name {
+    margin-bottom: 30px;
+    background-color: #d5d7d8;
+  }
+  
+  #post-and-name h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  #post-and-name small {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  #post-and-name form {
+    margin-top: 5px;
+  }
+  
+  #post-and-name form input[type="text"] {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #post-and-name form input[type="submit"] {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #post-and-name form input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  #content-part{
+    min-width: 50%;
+    margin-left: 15%;
+    display: flex;
     justify-content: center;
     flex-direction: column;
-    margin: 10px;
-}
-
-.vertical-line{
-    border-left: 1px solid black;
-    height: 90px;
-    width: 1px;
-    margin: 0 5px;
   }

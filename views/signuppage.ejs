@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha512-0p3K0H3S6Q4bEWZ/WmC94Tgit2ular2/n0ESdfEX8l172YyQj8re1Wu9s/HT9T/T2osUw5Gx/6pAZNk3UKbESw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
@@ -15,9 +18,9 @@
     <div id="signupcontainer">
         <div id="signuptextcontainer">
             <div id="signuptext">
-                <h1>Welcome to Codeial</h1>
+                <h1>Welcome to Text-App</h1>
                 <span>
-                    A habit tracker app is a digital tool designed to help users establish and maintain positive habits in their daily lives. These apps typically allow users to set specific goals or habits they want to cultivate, such as exercising regularly, drinking more water, reading, or meditating. Users can then track their progress over time, often through visual representations like calendars, graphs, or charts.
+                    Fill the given form correctly
                 </span>
             </div>
         </div>
@@ -34,6 +37,28 @@
             </form>
         </div>
     </div>
+
+    <script>
+        <% if(flash.success){ %>
+        new Noty({
+            theme: 'sunset',
+            text: '<%=flash.success %>',
+            type: 'succes',
+            layout: 'bottomLeft',
+            timeout: 2000
+        }).show();
+    <% } %>
+    <% if(flash.error && flash.error.length>0) {%>
+        new Noty({
+            theme: 'sunset',
+            text: '<%= flash.error %>',
+            type: 'error',
+            layout: 'bottomLeft',
+            timeout: 2000
+        }).show();
+
+    <% } %>
+    </script>
 </body>
 
 </html>
